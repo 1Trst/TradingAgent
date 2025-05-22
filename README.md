@@ -37,8 +37,8 @@ A comprehensive AI-powered trading assistant that combines fundamental analysis,
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/trading-agent-system.git
-cd trading-agent-system
+git clone https://github.com/yourusername/TradingAgent.git
+cd TradingAgent
 ```
 
 2. Install dependencies:
@@ -85,7 +85,7 @@ python trading_agent_system.py
 ## 📋 File Structure
 
 ```
-trading-agent-system/
+TradingAgent/
 ├── README.md
 ├── requirements.txt
 ├── .env (create this)
@@ -195,10 +195,26 @@ Query: "Find promising AI stocks under $50"
 - Always do your own research before investing
 - Consider consulting with a qualified financial advisor
 
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. Areas for improvement:
+- Additional technical indicators
+- More sophisticated valuation models
+- Enhanced news sources
+- Better portfolio optimization algorithms
+- Mobile-responsive interface improvements
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+If you encounter any issues:
+1. Check that all dependencies are installed correctly
+2. Verify your API keys are properly set (if using real data)
+3. Review the console output for error messages
+4. Create an issue on GitHub with details about the problem
 
 ## 🔮 Future Enhancements
 
@@ -210,7 +226,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Machine learning model improvements
 - Risk management tools
 - Tax optimization features
-- Social Network tools
 
 ---
 

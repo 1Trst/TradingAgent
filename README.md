@@ -1,152 +1,219 @@
-# TradingGPT - AI Trading Assistant
+# Trading Agent System 📊
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yourusername/TradingGPT/blob/main/LICENSE)
-[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+A comprehensive AI-powered trading assistant that combines fundamental analysis, technical analysis, macroeconomic insights, and news sentiment to provide intelligent investment recommendations and portfolio management.
 
-TradingGPT is an advanced AI-powered trading assistant that leverages multiple specialized agents to provide comprehensive market analysis, investment recommendations, and portfolio management features.
+## 🚀 Features
 
-## 🚀 Overview
+### Multi-Agent Analysis System
+- **Market Data Agent**: Technical analysis, chart patterns, volume analysis, liquidity assessment
+- **Fundamental Analysis Agent**: Financial statements, ratios, valuation models, earnings analysis
+- **Macro Environment Agent**: Economic indicators, central bank analysis, sector rotation, geopolitical risks
+- **News Sentiment Agent**: Financial news analysis, sentiment tracking, market impact assessment
+- **Orchestrator Agent**: Coordinates all agents to provide comprehensive trading recommendations
 
-TradingGPT combines technical analysis, fundamental analysis, macroeconomic insights, and news sentiment to deliver well-rounded trading recommendations. The system uses a multi-agent architecture where specialized agents collaborate to analyze different aspects of the market and provide holistic insights.
+### Portfolio Management
+- Track your investment positions with detailed holdings
+- Import/export portfolio data via CSV
+- Visual portfolio allocation charts
+- Automatic portfolio update suggestions based on agent recommendations
+- Edit mode for manual position adjustments
 
-Key features include:
-- Technical analysis with multiple indicators and market structure assessment
-- Fundamental analysis including financial ratios and valuation models
-- Macroeconomic environment monitoring and central bank policy analysis 
-- News sentiment analysis across various financial topics
-- Portfolio tracking and management
-- Interactive web interface built with Streamlit
+### Streamlit Web Interface
+- **Portfolio Tab**: Manage your holdings, view allocation, track changes
+- **Analysis Tab**: Interactive queries with the AI trading agents
+- **History Tab**: Review past analyses and recommendations
 
-## 🤖 Agent Architecture
-
-TradingGPT uses a sophisticated multi-agent system:
-
-1. **Trading Orchestrator** - Coordinates between specialized agents and synthesizes recommendations
-2. **Market Data Analyst** - Performs technical analysis, chart patterns, and market structure assessment
-3. **Fundamental Analyst** - Analyzes company financials, valuations, and business health
-4. **Macro Environment Analyst** - Monitors economic indicators, central bank policies, and geopolitical risks
-5. **News Sentiment Analyst** - Tracks sentiment in financial news and its impact on markets
-
-## 📊 Technical Features
-
-### Market Data Tools
-- Historical price data analysis
-- Multiple technical indicators (SMA, EMA, RSI, MACD, Bollinger Bands, etc.)
-- Support/resistance identification
-- Volume profile analysis
-- Market structure assessment
-- Liquidity analysis
-
-### Fundamental Analysis Tools
-- Financial statement analysis
-- Financial ratio calculations
-- Earnings report analysis
-- Valuation models (DCF, etc.)
-- Industry and competitive positioning assessment
-
-### Macro Environment Tools
-- Economic indicator tracking
-- Central bank policy analysis
-- Market regime assessment
-- Geopolitical risk monitoring
-- Sector rotation analysis
-
-### News Analysis Tools
-- Financial news search and sentiment analysis
-- Company-specific news impact assessment
-- Economic news monitoring
-- Social media sentiment tracking (planned)
-
-## 💻 Installation
+## 🛠️ Installation
 
 ### Prerequisites
-
 - Python 3.8+
-- Required API Keys:
-  - News API (optional)
-  - Alpha Vantage (optional)
-  - FRED API (optional)
+- Required API keys (optional, system works with simulated data):
+  - News API
+  - Alpha Vantage
+  - Finnhub
+  - FRED (Federal Reserve Economic Data)
 
 ### Setup
 
-1. Clone the repository
+1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/TradingGPT.git
-cd TradingGPT
+git clone https://github.com/yourusername/trading-agent-system.git
+cd trading-agent-system
 ```
 
-2. Create a virtual environment
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. Install dependencies
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Set up your API keys
+3. Create a `.env` file in the root directory:
 ```bash
-# Create a .env file
-cp .env.example .env
-# Edit the .env file with your API keys
+# API Keys (optional - system works without them using simulated data)
+NEWS_API_KEY=your_news_api_key
+ALPHA_VANTAGE_KEY=your_alpha_vantage_key
+FINNHUB_KEY=your_finnhub_key
+FRED_API_KEY=your_fred_api_key
 ```
 
-## 🏃‍♀️ Running the Application
+4. Install required NLTK data:
+```python
+import nltk
+nltk.download('vader_lexicon')
+```
 
-### Streamlit Web Interface
+## 🚀 Usage
 
+### Web Interface (Recommended)
+Launch the Streamlit app:
 ```bash
 streamlit run app_w_portfolio.py
 ```
 
-This will launch the TradingGPT web interface where you can:
-- Ask questions about stocks, sectors, or market conditions
-- Track and manage your investment portfolio
-- Analyze specific securities using all agents
-
 ### Command Line Interface
-
+Run the trading agent system directly:
 ```bash
 python trading_agent_system.py
 ```
 
-This will start the command-line version of TradingGPT, allowing you to interact with the system directly.
+### Example Queries
+- "What are the best growth stocks to buy right now?"
+- "Analyze my current portfolio and suggest rebalancing"
+- "What's the current market regime and how should I position?"
+- "Find undervalued dividend stocks in the healthcare sector"
+- "Should I sell any of my current holdings based on recent news?"
 
-## 📝 Example Queries
+## 📋 File Structure
 
-TradingGPT can answer questions like:
+```
+trading-agent-system/
+├── README.md
+├── requirements.txt
+├── .env (create this)
+├── app_w_portfolio.py          # Streamlit web interface
+├── trading_agent_system.py     # Main agent orchestration
+├── market_data_tools.py        # Technical analysis tools
+├── fundamental_analysis_tools.py # Company analysis tools
+├── macro_environment_tools.py  # Economic analysis tools
+├── news_analysis_tools.py      # News sentiment tools
+└── trading_portfolio.csv       # Your portfolio data (auto-created)
+```
 
-- "What stocks are positioned to benefit from current interest rate trends?"
-- "Analyze the technical indicators for AAPL and give me a trading recommendation"
-- "What sectors look promising given the current macroeconomic environment?"
-- "How is recent news affecting Tesla's stock price?"
-- "Rebalance my portfolio for the current market conditions"
-- "What are the key support and resistance levels for MSFT?"
+## 🔧 Configuration
 
-## 🧩 Architecture
+### API Keys
+The system is designed to work with or without API keys:
+- **With API keys**: Gets real-time data from financial APIs
+- **Without API keys**: Uses simulated but realistic data for demonstration
 
-The system is built using:
-- **OpenAI Agent SDK** for the multi-agent architecture
-- **yfinance** for market data
-- **NLTK** for sentiment analysis
-- **pandas** and **numpy** for data processing
-- **Streamlit** for the web interface
-- **Plotly** for interactive visualizations
+### Supported APIs
+- **News API**: Financial news and sentiment analysis
+- **Alpha Vantage**: Stock prices, fundamentals, economic data
+- **Finnhub**: Additional market data and news
+- **FRED**: Federal Reserve economic data
 
-## 🌱 Future Enhancements
+## 📊 Agent Capabilities
 
-- Risk management agent for portfolio optimization
-- Options analysis capabilities
-- Backtesting framework for strategy validation
-- Enhanced social media sentiment analysis
-- Real-time alerts for price movements and news
+### Market Data Agent
+- Historical price analysis
+- Technical indicators (RSI, MACD, Bollinger Bands, etc.)
+- Support/resistance level identification
+- Volume profile analysis
+- Market structure assessment
+- Liquidity conditions evaluation
+
+### Fundamental Analysis Agent
+- Financial statement analysis
+- Key ratio calculations (P/E, ROE, debt ratios, etc.)
+- Earnings report analysis
+- DCF valuation models
+- ESG metrics assessment
+- Insider transaction analysis
+- SEC filing parsing
+
+### Macro Environment Agent
+- Economic indicator tracking (GDP, inflation, unemployment)
+- Central bank policy analysis
+- Market regime identification
+- Geopolitical risk assessment
+- Sector rotation analysis
+- Global liquidity conditions
+
+### News Sentiment Agent
+- Financial news search and analysis
+- Sentiment scoring and categorization
+- News impact on stock prices
+- Economic news monitoring
+- Market implications from news events
+
+## 🎯 Portfolio Features
+
+### Position Tracking
+- Symbol, shares, entry price, date added
+- Notes for each position
+- Total cost and allocation calculations
+- Visual pie charts for allocation
+
+### Smart Updates
+- Agent recommendations parsed for portfolio changes
+- Buy/sell suggestions with approval workflow
+- Automatic position updates based on recommendations
+- Change history tracking
+
+### Data Management
+- CSV import/export functionality
+- Local data storage
+- Edit mode for manual adjustments
+- Backup and restore capabilities
+
+## 🔍 Example Workflows
+
+### 1. Portfolio Analysis
+```
+Query: "Analyze my current portfolio and suggest improvements"
+→ Macro Agent: Assesses current market regime
+→ News Agent: Checks sentiment for your holdings
+→ Fundamental Agent: Evaluates each position
+→ Technical Agent: Reviews chart patterns
+→ Result: Specific buy/sell/hold recommendations
+```
+
+### 2. Stock Discovery
+```
+Query: "Find promising AI stocks under $50"
+→ Macro Agent: Identifies favorable sectors
+→ News Agent: Finds stocks with positive sentiment
+→ Fundamental Agent: Screens for strong financials
+→ Technical Agent: Validates technical setups
+→ Result: Ranked list of specific opportunities
+```
+
+## 🛡️ Risk Disclaimers
+
+- This system is for educational and research purposes
+- Not licensed financial advice
+- Past performance doesn't guarantee future results
+- Always do your own research before investing
+- Consider consulting with a qualified financial advisor
+
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## ⚠️ Disclaimer
+## 🔮 Future Enhancements
 
-TradingGPT is for informational purposes only and does not constitute financial advice. Always do your own research and consider consulting with a financial advisor before making investment decisions.
+- Real-time portfolio tracking with broker integration
+- Advanced options and derivatives analysis
+- Backtesting framework for strategy validation
+- Mobile app development
+- Integration with additional data providers
+- Machine learning model improvements
+- Risk management tools
+- Tax optimization features
+- Social Network tools
+
+---
+
+**Built with**: Python, Streamlit, yfinance, pandas, plotly, and various financial APIs
+
+**Disclaimer**: This software is provided for educational purposes only and should not be considered as financial advice.

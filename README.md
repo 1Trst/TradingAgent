@@ -98,7 +98,7 @@ cp .env.example .env
 ### Streamlit Web Interface
 
 ```bash
-streamlit run app.py
+streamlit run app_w_portfolio.py
 ```
 
 This will launch the TradingGPT web interface where you can:
